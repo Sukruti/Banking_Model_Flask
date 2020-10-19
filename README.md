@@ -1,4 +1,4 @@
-# Flight Fare Prediction: 
+# Bank Customer Churn Prediction: 
 
 ## Table of Content
   * [Demo](#demo)
@@ -12,7 +12,7 @@
 
 
 ## Demo
-Link: [https://flight-price-prediction-api.herokuapp.com/](https://flight-price-prediction-api.herokuapp.com/)
+
 
 [![](https://i.imgur.com/R1g2wvC.png)](https://flight-price-prediction-api.herokuapp.com/)
 
