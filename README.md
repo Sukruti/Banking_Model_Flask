@@ -13,10 +13,11 @@
 
 ## Demo
 
+![HomeScreen](https://user-images.githubusercontent.com/6366237/96409048-4b731580-1202-11eb-9b1b-eedcae591b60.PNG)
 
-[![](https://i.imgur.com/R1g2wvC.png)](https://flight-price-prediction-api.herokuapp.com/)
+![File_Output](https://user-images.githubusercontent.com/6366237/96408866-fdf6a880-1201-11eb-9a68-c5ced877595b.PNG)
 
-[![](https://i.imgur.com/p0aeL6c.png)](https://flight-price-prediction-api.herokuapp.com/)
+
 
 ## Overview
 This is a Flask web app which predicts fare of Flight ticket.
