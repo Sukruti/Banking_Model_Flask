@@ -12,18 +12,18 @@
 
 
 ## Demo
-
+ * Home Screen :
 ![HomeScreen](https://user-images.githubusercontent.com/6366237/96409048-4b731580-1202-11eb-9b1b-eedcae591b60.PNG)
-
+ * File Output
 ![File_Output](https://user-images.githubusercontent.com/6366237/96408866-fdf6a880-1201-11eb-9a68-c5ced877595b.PNG)
+ * Data Entry Output
+![Individual Entry](https://user-images.githubusercontent.com/6366237/96409317-b45a8d80-1202-11eb-8de0-52f17bd486b2.PNG)
 
 
 
 ## Overview
-This is a Flask web app which predicts fare of Flight ticket.
+This is a Flask web app which predicts customer attrition from a bank data.
 
-## Motivation
-What to do when you are at home due to this pandemic situation? I started to learn Machine Learning model to get most out of it. I came to know mathematics behind all supervised models. Finally it is important to work on application (real world application) to actually make a difference.
 
 ## Installation
 The Code is written in Python 3.6.10. If you don't have Python installed you can find it [here](https://www.python.org/downloads/). If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip. To install the required packages and libraries, run this command in the project directory after [cloning](https://www.howtogeek.com/451360/how-to-clone-a-github-repository/) the repository:
@@ -31,37 +31,34 @@ The Code is written in Python 3.6.10. If you don't have Python installed you can
 pip install -r requirements.txt
 ```
 
-## Deployement on Heroku
-Login or signup in order to create virtual app. You can either connect your github profile or download ctl to manually deploy this project.
-
-[![](https://i.imgur.com/dKmlpqX.png)](https://heroku.com)
-
-Our next step would be to follow the instruction given on [Heroku Documentation](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy a web app.
-
 ## Directory Tree 
 ```
 ├── static 
 │   ├── css
 ├── template
 │   ├── home.html
+│   ├── complete.html
+├── testdata
+│   ├── RIA_Bank_test
 ├── Procfile
 ├── README.md
 ├── app.py
-├── flight_price.ipynb
-├── flight_rf.pkl
+├── RandomForestAlgo.ipynb
+├── random_forest_regression_model.pkl
 ├── requirements.txt
+├── RIA_ML_Data_Set.xlsx
 ```
 
 ## Technologies Used
 
 ![](https://forthebadge.com/images/badges/made-with-python.svg)
 
-[<img target="_blank" src="https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png" width=170>](https://flask.palletsprojects.com/en/1.1.x/) [<img target="_blank" src="https://number1.co.za/wp-content/uploads/2017/10/gunicorn_logo-300x85.png" width=280>](https://gunicorn.org) [<img target="_blank" src="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" width=200>](https://scikit-learn.org/stable/) 
+[<img target="_blank" src="https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png" width=170>](https://flask.palletsprojects.com/en/1.1.x/) [<img target="_blank" src="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" width=200>](https://scikit-learn.org/stable/) 
 
 
 ## Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an [issue](https://github.com/Mandal-21/Flight-Price-Prediction/issues) here by including your search query and the expected result
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an [issue]
 
 ## Future Scope
 
