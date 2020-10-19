@@ -1,0 +1,456 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIA PAS</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+
+</head>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'xls') || (ext == 'xlsx'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+
+<body>
+
+	  <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Bank Customer Churn Prediction</a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+ <!--form action="predict_from_file" method="post" -->
+  <div class="container">
+		<div class="row">
+						<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<h3 class="card-title">Choose the input data file</h3>
+								  <input id="file-picker" type="file" name="file" accept=".xls,.xlsx" multiple>
+    
+	<br><br>
+								  <input type="submit"  name="" value="Submit" class="btn btn-secondary">
+								</div>
+
+	
+	
+</form>
+
+						</div>
+					</div>
+				
+				</div>
+			</div>
+
+
+		
+    <br>
+
+<div class="container">
+<h3 class="card-title"> OR </h3> 
+</div>
+
+	</br>
+
+
+    <div class="container">
+
+
+
+        <form action="\predict" method="post">
+
+			<div class="row">
+					<div class="col-sm-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Customer Name</h5>
+								<!-- Departure -->
+								<input type="text" id="Cust_Name" name="Cust_Name" required="required">
+           
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="col-sm-3">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">Customer Address</h5>
+								<!-- Arrival -->
+								<input type="text" name="Cust_Addr" id="Cust_Addr" required="required">
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Established Date</h5>
+                            <!-- Departure -->
+                            <input type="date" name="Established_Dt" id="Established_Dt" required="required">
+                        </div>
+                    </div>
+                </div>
+                
+				<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tenure Date</h5>
+                            <!-- Arrival -->
+                            <input type="date" name="Tenure_Dt" id="Tenure_Dt" required="required">
+                        </div>
+                    </div>
+                </div>
+				
+				</div>
+
+		
+            <br>
+
+			<div class="row">
+			 
+			 <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Source -->
+                            <h5 class="card-title">Distance To Residence</h5>
+                            <select name="DistanceToResidence" id="DistanceToResidence" required="required">
+                                <option value="High_Proximity">High Proximity</option>
+                                <option value="Medium_Proximity">Medium Proximity</option>
+                                <option value="Low_Proximity">Low Proximity</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+               </div>
+				
+              
+			 <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Source -->
+                            <h5 class="card-title">Credit Rating</h5>
+                            <select name="Credit_Rating" id="Credit_Rating" required="required">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+				
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Industry</h5>
+                            <!-- Destination -->
+                            <select name="Industry" id="Industry" required="required">
+                                <option value="Manufaturing">Manufaturing</option>
+                                <option value="NBFI">NBFI</option>
+                                <option value="Services">Services</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+				
+               <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer Segment</h5>
+                            <!-- Destination -->
+                            <select name="CustomerSegment" id="CustomerSegment" required="required">
+                                <option value="Large_Customer">Large Customer</option>
+                                <option value="Medium_Customer">Medium Customer</option>
+                                <option value="Small_Customer">Small Customer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br>
+            <div class="row">
+                
+            </div>
+
+        
+            <br>
+           
+		   <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Num Of Products</h5>
+                            <input type="number" name="NumOfProducts" id="NumOfProducts" required="required">
+                        </div>
+                    </div>
+					
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">No Of Transactions</h5>
+                            <input type="number" name="NoOfTransactions" id="NoOfTransactions" required="required">
+                        </div>
+                    </div>
+                </div>
+
+		<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Has Credit Card</h5>
+                            <!-- Total Stops -->
+                            <select name="HasCrCard" required="required">
+								<option value="Yes">Yes</option>
+                                <option value="No">No</option>  
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h5 class="card-title">No of complains</h5>
+                            <input type="number" name="NoOfComplains" id="NoOfComplains" required="required">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+			
+			
+		   <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Liquidity</h5>
+                            <input type="text" name="Liquidity" id="Liquidity" required="required">
+                        </div>
+                    </div>
+					
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lending Loan</h5>
+                            <input type="text" name="Lending_Loan" id="Lending_Loan" required="required">
+                        </div>
+                    </div>
+                </div>
+
+		<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Trade</h5>
+                           <input type="text" name="Trade" id="Trade" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h5 class="card-title">Insurance</h5>
+                            <input type="text" name="Insurance" id="Insurance" required="required">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           <br>
+			
+		      <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Turnover</h5>
+                            <input type="text" name="Turnover" id="Turnover" required="required">
+                        </div>
+                    </div>
+					
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Aggregate Balance</h5>
+                            <input type="text" name="Agg_Blnc" id="Agg_Blnc" required="required">
+                        </div>
+                    </div>
+                </div>
+
+		<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Payments</h5>
+                           <input type="text" name="Payments" id="Payments" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h6 class="card-title">Payments After due date</h6>
+                            <input type="number" name="Payments_Dues" id="Payments_Dues" required="required">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+           <br>
+		     <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">% Diff In Blance Amt</h5>
+                            <input type="text" name="Diff_Blc_Amt" id="Diff_Blc_Amt" required="required">
+                        </div>
+                    </div>
+					
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cancelled Bills</h5>
+                            <input type="number" name="Cncl_Bill" id="Cncl_Bill" required="required">
+                        </div>
+                    </div>
+                </div>
+				
+		<div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cancelled Payments</h5>
+                           <input type="text" name="Cncl_Payments" id="Cncl_Payments" required="required">
+                        </div>
+                    </div>
+                </div>
+               
+		</div>
+
+           <br>
+			<div class="row">
+			   <div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h5 class="card-title">Cancelled Adjustments</h5>
+                            <input type="text" name="Cncl_Adj" id="Cncl_Adj" required="required">
+                        </div>
+                    </div>
+                </div>
+
+				<div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h5 class="card-title">Cancelled Debit Adj</h5>
+                            <input type="text" name="Cncl_D_Adj" id="Cncl_D_Adj" required="required">
+                        </div>
+                    </div>
+                </div>
+				
+				   <div class="col-sm-3">
+                    <div class="card">
+                        
+						<div class="card-body">
+                            <h5 class="card-title">Cancelled Credit Adj</h5>
+                            <input type="text" name="Cncl_C_Adj" id="Cncl_C_Adj" required="required">
+                        </div>
+                    </div>
+                </div>
+				
+				
+            </div>
+
+           <br>
+			
+			
+			
+            <!-- Submit -->
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+
+        <br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+        <p>RIA Perdictive Analytics System</p>
+
+    </div>
+
+
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
